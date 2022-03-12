@@ -1,0 +1,78 @@
+import 'dart:convert';
+
+List<Productmodel> productmodelFromJson(String str) => List<Productmodel>.from(
+    json.decode(str).map((x) => Productmodel.fromJson(x)));
+
+String productmodelToJson(List<Productmodel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+class Productmodel {
+  Productmodel({
+    required this.uuid,
+    required this.name,
+    required this.description,
+    required this.slug,
+    required this.sizeguideimg,
+    required this.isnew,
+    required this.issoldout,
+    required this.updatedat,
+    required this.hascolorvariant,
+    required this.variants,
+    required this.images,
+    required this.colors,
+    required this.islowstock,
+    required this.shippingreturn,
+    required this.help,
+  });
+
+  String? uuid;
+  String? name;
+  String? description;
+  String? slug;
+  String? sizeguideimg;
+  bool? isnew;
+  bool? issoldout;
+  String? updatedat;
+  int? hascolorvariant;
+  Map? variants;
+  Map? images;
+  Map? colors;
+  bool? islowstock;
+  String? shippingreturn;
+  String? help;
+
+  factory Productmodel.fromJson(Map<String, dynamic> json) => Productmodel(
+        uuid: json['uuid'],
+        name: json['name'],
+        description: json['description'],
+        slug: json['slug'],
+        sizeguideimg: json['size_guide_img'],
+        isnew: json['is_new'],
+        issoldout: json['is_soldout'],
+        updatedat: json['updated_at'],
+        hascolorvariant: json['has_color_variant'],
+        variants: json['variants'],
+        images: json['images'],
+        colors: json['colors'],
+        islowstock: json['is_low_stock'],
+        shippingreturn: json['shipping_return'],
+        help: json['help'],
+      );
+  Map<String, dynamic> toJson() => {
+        "uuid": uuid,
+        "name": name,
+        "description": description,
+        "slug": slug,
+        "sizeguideimg": sizeguideimg,
+        "isnew": isnew,
+        "issoldout": issoldout,
+        "updatedat": updatedat,
+        "hascolorvariant": hascolorvariant,
+        "variants": variants,
+        "images": images,
+        "colors": colors,
+        "islowstock": islowstock,
+        "shippingreturn": shippingreturn,
+        "help": help,
+      };
+}
